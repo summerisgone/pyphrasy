@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Склонение русских словосочетаний с помощью Python, pymorphy2</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body class="container">
+<h1>Склонение русских словосочетаний с помощью python библиотеки <a href="https://pymorphy2.readthedocs.org/">pymorphy2</a></h1>
+<form action="/inflect" method="POST">
+    <div class="control-group">
+        <label class="control-label" for="phrase">Словосочетание</label>
+        <div class="controls">
+            <input class="input-lg col-lg-10" type="text" id="phrase" name="phrase" required/>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox"><input type="checkbox" name="cases" value="gent"/>Родительный (Кого? Чего?)</label>
+            <label class="checkbox"><input type="checkbox" name="cases" value="datv"/>Дательный (Кому? Чему?)</label>
+            <label class="checkbox"><input type="checkbox" name="cases" value="accs"/>Винительный (Кого? Что?)</label>
+            <label class="checkbox"><input type="checkbox" name="cases" value="ablt"/>Творительный (Кем? Чем?)</label>
+            <label class="checkbox"><input type="checkbox" name="cases" value="loct"/>Предложный (О ком? О чём?)</label>
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit"/>
+</form>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ import argparse
 import logging
 
 import pymorphy2
-
+CASE_CHOICES = ('nomn', 'gent', 'datv', 'accs', 'ablt', 'loct', 'voct', 'gen2', 'acc2', 'loc2')
 
 LOGGING_LEVELS = {
     0: logging.ERROR,
@@ -133,7 +133,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Inflect input phrase')
     parser.add_argument('word', help='Phrase to inflect')
     parser.add_argument('case', help='case from https://pymorphy2.readthedocs.org/en/latest/user/grammemes.html',
-                        choices=('nomn', 'gent', 'datv', 'accs', 'ablt','loct', 'voct', 'gen2', 'acc2', 'loc2'))
+                        choices=CASE_CHOICES)
     parser.add_argument('-v', '--verbose', type=int, required=False, default=0, choices=LOGGING_LEVELS)
     args = parser.parse_args()
     logging.basicConfig(format='%(levelname)s: %(message)s', level=LOGGING_LEVELS[args.verbose])

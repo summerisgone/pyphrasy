@@ -1,0 +1,13 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+body {
+    padding: auto;
+    color: #333;
+    background-color: #EEE;
+    font-family: Ubuntu, Verdana, sans-serif;
+}
+
+label {
+    font-weight: normal;
+}
+form {margin-top: 50px;}
+.clear {clear: both}
