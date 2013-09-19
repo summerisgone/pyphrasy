@@ -24,7 +24,9 @@
 
 
 Проект [запущен на Heroku](http://pyphrasy.herokuapp.com/), и имеет API на http://pyphrasy.herokuapp.com/inflect.
-Ожидаю POST запрос с двумя параметрами:
+Ожидаю запрос с двумя параметрами:
 
 * phrase - что склонять
 * cases - список падежей по сокращениям в pymorphy2
+
+Например: http://pyphrasy.herokuapp.com/inflect?phrase=склонятор%20словосочетаний&cases=gent&cases=datv
