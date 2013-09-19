@@ -18,6 +18,7 @@ class InflectTestSuite(unittest.TestCase):
             (u'Кирпич керамический лицевой полнотелый одинарный велюровый 1НФ М150', u'кирпич'),
             (u'Труба стальная профильная электросварная', u'труба'),
             (u'плита для стальных перекрытий бетонная', u'плита'),
+            (u'полные штаны', u'штаны'),
         )
         for phrase, master_word in phrases:
             parsed = self.inflector.select_master(phrase.split(' '))
@@ -33,10 +34,14 @@ class InflectTestSuite(unittest.TestCase):
                 u'кирпича керамического лицевого полнотелого одинарного велюрового 1НФ М150'),
             (u'труба стальная профильная электросварная', u'трубы стальной профильной электросварной'),
             (u'плита для стальных перекрытий бетонная', u'плиты для стальных перекрытий бетонной'),
+            (u'полные штаны', u'полных штанов'),
+            (u'бедные люди', u'бедных людей'),
+            (u'стальные плиты', u'стальных плит'),
         )
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             genitive = self.inflector._inflect_with_master('gent', phrase, master.parsed)
+            print genitive
             self.assertEqual(genitive, result)
 
 
@@ -51,10 +56,13 @@ class InflectTestSuite(unittest.TestCase):
             (u'труба стальная профильная электросварная', u'трубу стальную профильную электросварную'),
             (u'плита для стальных перекрытий бетонная', u'плиту для стальных перекрытий бетонную'),
             (u'моя прекрасная няня', u'мою прекрасную няню'),
+            (u'полные штаны', u'полные штаны'),
+            (u'бедные люди', u'бедных людей'),
         )
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             accusative = self.inflector._inflect_with_master('accs', phrase, master.parsed)
+            print accusative
             self.assertEqual(accusative, result)
 
 if __name__ == '__main__':

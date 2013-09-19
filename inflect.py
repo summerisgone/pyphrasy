@@ -79,8 +79,13 @@ class PhraseInflector(object):
             dependent = None
             for version in parsed_chunk:
                 if version.tag.POS in (u'ADJF', u'PRTF') and version.tag.case == master_word.tag.case:
-                    infl = {case, master_word.tag.number, master_word.tag.gender}
-                    if case == u'accs' and master_word.tag.gender == u'masc':
+                    infl = {case, master_word.tag.number}
+                    if master_word.tag.number == 'sing':
+                        infl.add(master_word.tag.gender)
+                    else:
+                        infl.add(master_word.tag.number)
+
+                    if case == u'accs' and (master_word.tag.gender == u'masc' or master_word.tag.number == u'plur'):
                         infl.add(master_word.tag.animacy)
 
                     try:
