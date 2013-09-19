@@ -13,13 +13,18 @@ def index():
 
 @app.route("/inflect", methods=['GET', 'POST'])
 def inflect():
-    if 'phrase' not in request.form:
+    if request.method == 'POST':
+        params = request.form
+    else:
+        params = request.args
+
+    if 'phrase' not in params:
         return u'укажите слово', 400,  {'Content-Type':'text/plain; charset=utf-8'}
-    if 'cases' not in request.form:
+    if 'cases' not in params:
         return u'выберите падежи', 400,  {'Content-Type':'text/plain; charset=utf-8'}
 
-    phrase = request.form['phrase']
-    cases = request.form.getlist('cases')
+    phrase = params['phrase']
+    cases = params.getlist('cases')
     cases = set(CASE_CHOICES).intersection(cases)
 
     morph = pymorphy2.MorphAnalyzer()
