@@ -41,7 +41,7 @@ class InflectTestSuite(unittest.TestCase):
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             genitive = self.inflector._inflect_with_master('gent', phrase, master.parsed)
-            print genitive
+            print(genitive)
             self.assertEqual(genitive, result)
 
 
@@ -62,7 +62,7 @@ class InflectTestSuite(unittest.TestCase):
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             accusative = self.inflector._inflect_with_master('accs', phrase, master.parsed)
-            print accusative
+            print(accusative)
             self.assertEqual(accusative, result)
 
 if __name__ == '__main__':
