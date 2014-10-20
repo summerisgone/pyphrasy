@@ -7,7 +7,7 @@ import logging
 import pymorphy2
 
 
-CASE_CHOICES = ('nomn', 'gent', 'datv', 'accs', 'ablt', 'loct', 'voct', 'gen2', 'acc2', 'loc2', 'sing', 'plur')
+GRAM_CHOICES = ('nomn', 'gent', 'datv', 'accs', 'ablt', 'loct', 'voct', 'gen2', 'acc2', 'loc2', 'sing', 'plur')
 
 LOGGING_LEVELS = {
     0: logging.ERROR,
@@ -64,16 +64,16 @@ class PhraseInflector(object):
         else:
             return None
 
-    def inflect(self, phrase, case):
+    def inflect(self, phrase, form):
         # phrase = phrase.lower()
         master_word = self.select_master(phrase.lower().split())
         if master_word:
-            return self._inflect_with_master(case, phrase, master_word.parsed)
+            return self._inflect_with_master(form, phrase, master_word.parsed)
         else:
             logger.error(u'Can not find master word in: {0}'.format(phrase))
-            return self._inflect_without_master(case, phrase)
+            return self._inflect_without_master(form, phrase)
 
-    def _inflect_with_master(self, case, phrase, master_word):
+    def _inflect_with_master(self, form, phrase, master_word):
         result = []
         if isinstance(form, str):
             form = {form}
@@ -81,9 +81,9 @@ class PhraseInflector(object):
             form = set(form)
         # Do not inflect in numbers if master word is always plur or sing
         if {'Pltm', 'Sgtm'} & set(master_word.tag.grammemes):
-            case = case - {'sing', 'plur'}
+            form = form - {'sing', 'plur'}
 
-        infl = case
+        infl = form
         inflected_master = master_word.inflect(infl)
         if not inflected_master:
             logger.error(u'Can not inflect master word {1} with {2}: {0}'.format(phrase, master_word.word, str(infl)))
@@ -99,14 +99,14 @@ class PhraseInflector(object):
 
             dependent = None
             for version in parsed_chunk:
-                # If POS should adopt the form AND was in the same form which the master word had
+                # If POS should adopt the form AND was in the same case(падеж) which the master word had
                 if version.tag.POS in (u'ADJF', u'PRTF') and version.tag.case == master_word.tag.case:
-                    infl = case | {inflected_master.tag.number}
+                    infl = form | {inflected_master.tag.number}
                     # If in the single number, adopt the gender of master word
                     if inflected_master.tag.number == 'sing':
                         infl.add(inflected_master.tag.gender)
 
-                    if (u'accs' in case) \
+                    if (u'accs' in form) \
                             and (inflected_master.tag.gender == u'masc' or inflected_master.tag.number == u'plur'):
                         infl.add(master_word.tag.animacy)
 
@@ -130,7 +130,7 @@ class PhraseInflector(object):
 
         return u' '.join(result)
 
-    def _inflect_without_master(self, case, phrase):
+    def _inflect_without_master(self, form, phrase):
         result = []
         if isinstance(form, str):
             form = {form}
@@ -144,8 +144,8 @@ class PhraseInflector(object):
             if not any(form in parsed_chunk.tag for form in ({'NOUN', 'nomn'}, {'ADJF', 'nomn'})):
                 result.append(chunk)
                 continue
-            infl = case
-            if u'accs' in case:
+            infl = form
+            if u'accs' in form:
                 infl.add('inan')
             try:
                 inflected = parsed_chunk.inflect(infl)
@@ -163,10 +163,10 @@ class PhraseInflector(object):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Inflect input phrase')
     parser.add_argument('word', help='Phrase to inflect')
-    parser.add_argument('--case', help='case from https://pymorphy2.readthedocs.org/en/latest/user/grammemes.html',
+    parser.add_argument('--gram', help='grammem from https://pymorphy2.readthedocs.org/en/latest/user/grammemes.html',
                         action='append',
                         required=True,
-                        choices=CASE_CHOICES)
+                        choices=GRAM_CHOICES)
     parser.add_argument('-v', '--verbose', type=int, required=False, default=0, choices=LOGGING_LEVELS)
     args = parser.parse_args()
     logging.basicConfig(format='%(levelname)s: %(message)s', level=LOGGING_LEVELS[args.verbose])
