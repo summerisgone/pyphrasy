@@ -8,9 +8,18 @@
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body class="container">
+    <a href="https://github.com/summerisgone/pyphrasy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
 <h1>Склонение по падежам русских словосочетаний:<br> python библиотека и онлайн-сервис</h1>
-<h2>(на основе<a href="https://pymorphy2.readthedocs.org/">pymorphy2</a>)</h2>
+<h2>(на основе <a href="https://pymorphy2.readthedocs.org/">pymorphy2</a>)</h2>
 <p>Проект доступен на <a href="https://github.com/summerisgone/pyphrasy">гитхабе</a></p>
+<div class="panel panel-warning">
+    <div class="panel-heading">Ограничения в работе сервиса</div>
+    <div class="panel-body">
+        Так как данный сервис рабоатет на бесплатном аккаунте heroku, <a href="https://www.heroku.com/pricing">он обязан спать 6 часов в сутки</a>. <br>
+        Если вам необходимо, чтобы такой сервис работал постоянно, <a href="https://github.com/summerisgone/pyphrasy/blob/master/README.md">запустите копию на своем хостинге</a> или свяжитесь со мной.
+    </div> 
+</div>
 <form action="/inflect" method="POST">
     <div class="control-group">
         <label class="control-label" for="phrase">Словосочетание</label>

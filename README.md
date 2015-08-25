@@ -30,3 +30,35 @@
 * forms - один элемент или список падежей или/и чисел по сокращениям в pymorphy2, разделённые запятой
 
 Например: http://pyphrasy.herokuapp.com/inflect?phrase=склонятор%20словосочетаний&forms=gent,plur&forms=datv
+
+
+# Как запустить на своем хостинге
+
+Веб-сервис написан на python и испольузет фреймворк Flask. Для работы потребуется установка пакетов, указаных в requirements.txt.
+
+По желанию можно использовать [virtualenv](http://www.unix-lab.org/posts/virtualenv/).
+
+Инструкция для чайников:
+
+1. Скопировать исходный код с github
+
+1.1. Создать и активировать окружение virtualenv (необязательно)
+
+
+    $ virtualenv .env
+    $ source .env/bin/activate
+
+2. Установить зависимости
+
+
+        $ pip install -r requirements.txt
+
+3. Запустить сервис через gunicorn
+
+
+        $ gunicorn app:app
+
+4. Проверить работоспособность
+
+
+        $ curl "http://localhost:8000/inflect?phrase=%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F&cases=accs&cases=datv"
