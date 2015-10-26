@@ -3,10 +3,10 @@
 Мы долго искали способ, как просклонять сложные названия в проекте. Нашли платную библиотеку,
 но тем интереснее стало написать своё открытое решение.
 
-Всё просто:
+Всё просто: устанавливаете пакет ``pyphrasy`` и:
 
     import pymorphy2
-    from inflect import PhraseInflector, GRAM_CHOICES
+    from pyphrasy.inflect import PhraseInflector
 
     morph = pymorphy2.MorphAnalyzer()
     inflector = PhraseInflector(morph)
