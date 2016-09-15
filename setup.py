@@ -43,7 +43,7 @@ setup(
     packages=['pyphrasy'],
     provides=['pyphrasy'],
     package_dir={'pyphrasy': '.'},
-    package_data={'pyphrasy': recursive('./static')+recursive('./templates')},
+    package_data={'pyphrasy': recursive('./static')+recursive('./templates')+['README.md']},
 
     # testing
     cmdclass={'test': PyTest},
