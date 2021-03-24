@@ -1,5 +1,3 @@
-pymorphy2 >=0.8,<0.9
-pymorphy2-dicts 
-DAWG-Python >=0.7,<0.8
+pymorphy2 >=0.9,<0.10
 Flask >=1.1,<1.2
 gunicorn >=19,<=20

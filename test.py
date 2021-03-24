@@ -43,7 +43,6 @@ class InflectTestSuite(unittest.TestCase):
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             genitive = self.inflector._inflect_with_master('gent', phrase, master.parsed)
-            print(genitive)
             self.assertEqual(genitive, result)
 
 
@@ -65,7 +64,6 @@ class InflectTestSuite(unittest.TestCase):
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             accusative = self.inflector._inflect_with_master('accs', phrase, master.parsed)
-            print(accusative)
             self.assertEqual(accusative, result)
 
     def test_inflection_with_master_singular(self):
@@ -86,7 +84,6 @@ class InflectTestSuite(unittest.TestCase):
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             sing = self.inflector._inflect_with_master('sing', phrase, master.parsed)
-            print(sing)
             self.assertEqual(sing, result)
 
     def test_inflection_with_master_plural(self):
@@ -107,7 +104,6 @@ class InflectTestSuite(unittest.TestCase):
         for phrase, result in phrases:
             master = self.inflector.select_master(phrase.split(' '))
             plur = self.inflector._inflect_with_master('plur', phrase, master.parsed)
-            print(plur)
             self.assertEqual(plur, result)
 
 
