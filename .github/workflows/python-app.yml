@@ -32,18 +32,3 @@ jobs:
     - name: Test with pytest
       run: |
         python setup.py test
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - uses: actions/checkout@v2
-    - name: Login to Heroku Container registry
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: |
-        sudo snap install --classic heroku
-        heroku --version
-        heroku container:login
-        heroku container:push -a appname pyphrasy
-        heroku container:release -a appname pyphrasy
