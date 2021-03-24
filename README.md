@@ -62,3 +62,15 @@
 
 
         $ curl "http://localhost:8000/inflect?phrase=%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F&cases=accs&cases=datv"
+
+## Changelog
+
+### 0.1
+
+начальный релиз
+
+### 0.2.0
+
+- [исправлен](https://github.com/summerisgone/pyphrasy/pull/13) `pip install`
+- настроен CI
+- обновлены зависимости
