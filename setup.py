@@ -39,11 +39,11 @@ setup(
     long_description=readme,
 
     # technical info
-    version='0.2.0',
+    version='1.0.0',
     packages=['pyphrasy'],
     provides=['pyphrasy'],
     package_dir={'pyphrasy': '.'},
-    package_data={'pyphrasy': recursive('./static')+recursive('./templates')+['README.md']},
+    package_data={'pyphrasy': recursive('./static')+['README.md']},
 
     # testing
     cmdclass={'test': PyTest},
@@ -62,13 +62,8 @@ setup(
         'Intended Audience :: Information Technology',
         'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
