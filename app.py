@@ -4,7 +4,7 @@ from os.path import dirname, join
 import pymorphy2
 from aiohttp import web
 from aiohttp.web_response import Response
-from multidict import MultiDict, MultiDictProxy
+from multidict import MultiDictProxy
 
 from inflect import PhraseInflector, GRAM_CHOICES
 
