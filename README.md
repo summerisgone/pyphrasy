@@ -20,8 +20,7 @@
 Если вам нравится проделанная работа и вы хотите внести свою лепту - помогите проекту OpenCorpora,
 это совсем не сложно.
 
-# Веб-сервис
-
+## Веб-сервис
 
 Проект [запущен на Heroku](http://pyphrasy.herokuapp.com/), и имеет API на http://pyphrasy.herokuapp.com/inflect.
 Ожидаю запрос с двумя параметрами:
@@ -50,13 +49,12 @@
 
 2. Установить зависимости
 
+    $ pip install -r requirements.txt
 
-        $ pip install -r requirements.txt
-
-3. Запустить сервис через gunicorn
+3. Запустить сервис
 
 
-        $ gunicorn app:app
+        $ python app.py
 
 4. Проверить работоспособность
 
@@ -74,3 +72,8 @@
 - [исправлен](https://github.com/summerisgone/pyphrasy/pull/13) `pip install`
 - настроен CI
 - обновлены зависимости
+
+### 1.0.0
+
+- Переход на python3
+- Замена Flask + gunicorn на aiohttp
